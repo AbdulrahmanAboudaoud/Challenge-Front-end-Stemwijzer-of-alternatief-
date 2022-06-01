@@ -1,18 +1,137 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+
+html{
+    height: 100%;
+}
+
+
+
 body {
-    margin: 0 auto;
+ 
+    height: 100vh;
+    background-image: url(../bgimage.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.div1{
+   
+    background-color: rgb(231, 229, 235);
+    width: 1000px;
+    height: 400px;
+    border-style: round;
+    border-radius: 15px;
+    
+    
+}
+
+.maindiv{
+
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.navbar{
+    position: fixed;
+    top: 0px;
     width: 100%;
-    font-size:20px;
-    background-color: blueviolet;
+    height: 60px;
+    display: none;
 }
 
+.btn{
+    padding: 20px;
+    width: 150px;
+}
 
-img{
+.backbutton{
+    width: 50px;
+    border: none;
+}
+
+.counter{
+    padding: 5px 15px 5px 15px;
+    
+    
+}
+.navend{
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+
+.extrainfobuttons{
+
+    width: 800px;
+    height: 100px;
+  
+   position:absolute;
+   left: 50px;
+   top: 322px;
+   display: none;
+}
+.extrainfobtn{
+    padding: 12px;
+    font-size: 30px;
+    border: 2px solid lightgray;
+    border-radius: 20px;
+}
+
+.svg {
+    height: 48px;
+    margin: 0 5px;
+    fill: black;
+  }
+
+  .svganswers{
+      height: 30px;
+      margin: 0 10px;
+    
+
+  }
+
+.extrainfotext{
+    position: absolute;
+    top: 400px;
     width: 100%;
+    background-color: antiquewhite;
+    display: none;
+  }
+
+  .answers{
+      visibility: hidden;
+      width: 1000px;
+      height: 100px;
+      position: fixed;
+      bottom: 0px;
+      background-color:white;
+      
+  }
+
+  .answersbutton{
+      padding: 12px;
+      font-size: 30px;
+      width: 200px;
+      border-radius: 15px;
+  }
+  .answersbutton2{
+    padding: 12px;
+    font-size: 26px;
+    width: 275px;
+    border-radius: 15px;
 }
 
-
-
-footer{
-   text-align: center;
+.answersbutton3{
+    padding: 10px;
+    font-size: 15px;
+    width: 150px;
+    border-radius: 15px;
 }
-
