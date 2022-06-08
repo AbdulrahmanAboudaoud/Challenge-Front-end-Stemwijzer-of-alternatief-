@@ -4,9 +4,7 @@
 }
 
 
-html{
-    
-}
+
 
 
 
@@ -26,7 +24,7 @@ body {
     border-style: round;
     border-radius: 15px;
     position: relative;
-    overflow: hidden;
+    
     
     
 }
@@ -59,6 +57,18 @@ body {
 .btn{
     padding: 20px;
     width: 150px;
+}
+.next{
+    padding: 15px;
+    width: 150px;
+    position: absolute;
+    right: 50px;
+    top: 60px;
+    border-radius: 20px;
+    color: aliceblue;
+    display: none;
+    margin-top: 5px;
+    
 }
 
 .backbutton{
@@ -165,4 +175,19 @@ label {
       font-size: 15px;
      
       
+  }
+
+  .cont{
+      width: 1000px;
+      height: 600px;
+      background-color: aqua;
+  }
+
+  .checkboxdiv{
+      
+    width: 1000px;
+    
+    background-color: aqua;
+    position: absolute;
+    top: 150px;
   }

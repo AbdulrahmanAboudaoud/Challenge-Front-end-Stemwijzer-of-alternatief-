@@ -12,13 +12,15 @@ var skip = document.getElementById("skip");
 var backbutton = document.getElementById("backbutton");
 var counter = document.getElementById("counter");
 var div1 = document.getElementById("div1");
-
+var nextButton = document.getElementById("next");
+var checkboxdiv = document.getElementById("checkboxdiv");
 var choices = [];
 var count = 0;
 var width = 0;
 
 startbutton.addEventListener("click",startFunction);
 backbutton.addEventListener("click",backbuttonFunction);
+nextButton.addEventListener ("click",importantPartties);
 
 function progress(value){
 var progresline = document.getElementById("progresline");
@@ -99,47 +101,74 @@ function skipFunction(){
     
 }
 
+function createChekboxElement(arr){
+          
+    for (var option of arr){
+            var checboxName = (option.name == null)?option.title:option.name;  
+
+           /* if (option.name ==null){
+                var checboxName = option.title;
+            }
+            else{
+                var checboxName =option.name;
+            }
+            */
+
+            // ? is true : else or is flase        
+            var div = document.createElement('div');
+            div.classList.add ("div5");
+            var checkbox = document.createElement('input');
+            checkbox.type ="checkbox";
+            checkbox.name ="name";
+            checkbox.value = "true";
+            checkbox.id = checboxName;
+            var label = document.createElement('label');
+            label.htmlFor = checboxName;    
+            text = document.createTextNode(checboxName);
+            label.appendChild(text);
+            div.appendChild(checkbox);
+            div.appendChild(label);   
+            checkboxdiv.appendChild(div);
+        }
+        
+        
+}
+
+
+
+
+
+
 function importantTopics(){
 
     nav.style.display = "none";
     infobuttons.style.display = "none";
     answers.style.visibility = "hidden";
     startbutton.style.display = "none";
-    div1.style.height = "650px";
+    nextButton.style.display = "block";
+    //div1.style.height = "650px";
     subject.innerHTML = "Zijn er onderwerpen die je extra belangrijk vindt ?";
     statments.innerHTML = "0/30 stellingen geselecteerd";
-    createChekbox();
+    createChekboxElement(subjects);
 
 }
 
-function createChekbox(){
-   for(var r =0; r<= 9; r++){
-   
-    for(var i=0; i< subjects.length; i++){
 
-       
-        
-        var div = document.createElement('div');
-        div.classList.add ("div5");
 
-        var checkbox = document.createElement('input');
-        checkbox.type ="checkbox";
-        checkbox.name ="name";
-        checkbox.value = "true";
-        checkbox.id = i;
-        var label = document.createElement('label');
-        label.htmlFor = i;
-        label.appendChild(document.createTextNode(subjects[i].title));
-        
-        div.appendChild(checkbox);
-        div.appendChild(label);   
-        div1.appendChild(div); 
-        
-        console.log(subjects[i].title);
-        
+
+
+function importantPartties(){
+    nextButton.style.display = "none";
+    checkboxdiv.innerHTML="";
+    subject.innerHTML = "Welke partijen wil je meenemen in het resultaat ?";
+    statments.innerHTML = "kies alle partijen, allen de partijen die nu in de tweede kamer zitten, of maak zelf een selectie,slecteer minimaal 3 partijen";
+    
+    createChekboxElement(parties);
+
+
 }
-}
-}
+
+
 
 
 
