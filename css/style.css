@@ -187,7 +187,35 @@ label {
       
     width: 1000px;
     
-    background-color: aqua;
+    background-color: white;
     position: absolute;
     top: 150px;
+  }
+
+  #submit{
+      position: absolute;
+      top: 120PX;
+      left: 400px;
+      padding: 10px;
+      
+      display: none;
+  }
+
+  .partiesFilter{
+    display: none;
+    position: absolute;
+    top: 250px;
+    
+  }
+
+  .div6{
+    display: inline-block;
+    border: 2px black solid;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-left: 200px;
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+    background-color: white;
   }

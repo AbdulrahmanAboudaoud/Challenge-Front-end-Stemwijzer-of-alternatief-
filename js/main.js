@@ -14,13 +14,19 @@ var counter = document.getElementById("counter");
 var div1 = document.getElementById("div1");
 var nextButton = document.getElementById("next");
 var checkboxdiv = document.getElementById("checkboxdiv");
+var submitButton = document.getElementById("submit");
+var partiesFilter = document.getElementById("partiesFilter");
 var choices = [];
 var count = 0;
 var width = 0;
+var CheckAll = document.getElementById("CheckAll");
+var CheckSecond = document.getElementById("CheckSecond");
 
+submitButton.addEventListener("click",amountPartiesChecker);
 startbutton.addEventListener("click",startFunction);
 backbutton.addEventListener("click",backbuttonFunction);
 nextButton.addEventListener ("click",importantPartties);
+
 
 function progress(value){
 var progresline = document.getElementById("progresline");
@@ -105,23 +111,15 @@ function createChekboxElement(arr){
           
     for (var option of arr){
             var checboxName = (option.name == null)?option.title:option.name;  
-
-           /* if (option.name ==null){
-                var checboxName = option.title;
-            }
-            else{
-                var checboxName =option.name;
-            }
-            */
-
-            // ? is true : else or is flase        
+      
             var div = document.createElement('div');
             div.classList.add ("div5");
             var checkbox = document.createElement('input');
             checkbox.type ="checkbox";
-            checkbox.name ="name";
-            checkbox.value = "true";
+            checkbox.name ="cb";
+            checkbox.value = checboxName;
             checkbox.id = checboxName;
+           
             var label = document.createElement('label');
             label.htmlFor = checboxName;    
             text = document.createTextNode(checboxName);
@@ -133,26 +131,101 @@ function createChekboxElement(arr){
         
         
 }
+var importantTopicsArray = [];
+var checkBoxValue = document.getElementsByName('cb');
 
 
+
+function checkAll(myCheckbox){
+    if(myCheckbox.checked == true){
+        checkBoxValue.forEach(function(checkbox){
+            var d = checkbox.value;
+            checkbox.checked = true;
+            importantPartiesArray.push(d);
+        });
+    }
+
+    else{
+        checkBoxValue.forEach(function(checkbox){
+            checkbox.checked = false;
+            importantPartiesArray = [];
+
+        });
+    }
+  
+    console.log(importantPartiesArray);
+}
+
+
+function checkTopics(){
+
+for (var box of checkBoxValue){
+    
+    box.addEventListener('click', function(){
+        var s = this.value;
+        if(this.checked == true){
+            importantTopicsArray.push(this.value);
+        }
+        else{
+         var index = importantTopicsArray.indexOf(s);
+         if (index > -1){
+            importantTopicsArray.splice(index, 1);
+         }
+        }
+        console.log(importantTopicsArray);
+})
+
+}
+
+
+console.log(checkBoxValue);
+
+
+}
 
 
 
 
 function importantTopics(){
 
+    CheckAll.checked = false;
+
     nav.style.display = "none";
     infobuttons.style.display = "none";
     answers.style.visibility = "hidden";
     startbutton.style.display = "none";
     nextButton.style.display = "block";
-    //div1.style.height = "650px";
     subject.innerHTML = "Zijn er onderwerpen die je extra belangrijk vindt ?";
     statments.innerHTML = "0/30 stellingen geselecteerd";
     createChekboxElement(subjects);
+    checkTopics();
 
 }
 
+var importantPartiesArray = [];
+
+function checkParties(){
+var checkBoxValue = document.getElementsByName('cb');
+for (var box of checkBoxValue){
+    box.addEventListener('click', function(){
+        var s = this.value;
+        if(this.checked == true){
+            importantPartiesArray.push(this.value);
+        }
+        else{
+         var index = importantPartiesArray.indexOf(s);
+         if (index > -1){
+            importantPartiesArray.splice(index, 1);
+         }
+        }
+        console.log(importantPartiesArray);
+})
+}
+
+console.log(checkBoxValue);
+
+
+}
 
 
 
@@ -162,12 +235,24 @@ function importantPartties(){
     checkboxdiv.innerHTML="";
     subject.innerHTML = "Welke partijen wil je meenemen in het resultaat ?";
     statments.innerHTML = "kies alle partijen, allen de partijen die nu in de tweede kamer zitten, of maak zelf een selectie,slecteer minimaal 3 partijen";
-    
+    checkboxdiv.style.top = "300px";
     createChekboxElement(parties);
+    submitButton.style.display = "block";
+    partiesFilter.style.display = "block";
+    checkParties();
 
 
 }
 
+
+function amountPartiesChecker(){
+if(importantPartiesArray.length < 3){
+    alert('je moet minimaal 3 partijen kiezen !');
+}
+else{
+    
+}
+}
 
 
 

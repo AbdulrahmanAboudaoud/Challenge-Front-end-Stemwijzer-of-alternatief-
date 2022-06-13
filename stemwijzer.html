@@ -47,7 +47,22 @@
     
     <div id="div1" class=" div1  ">
 
-		<div id="checkboxdiv" class="checkboxdiv"></div>
+		<div id="partiesFilter" class="partiesFilter">
+			<div class="div6">
+			<input type="checkbox" id="CheckAll" name="checkAll" onchange="checkAll(this)">
+			<label for="checkAll"> alle partijen</label>
+			</div>
+			<div class="div6">
+			<input type="checkbox" id="checkSecond" name="checkSecond" onchange="CheckSecond(this)">
+			<label for="vehicle2"> zittende partijen</label>
+			</div>
+
+
+		</div>
+
+		<div id="checkboxdiv" class="checkboxdiv">
+			
+		</div>
 
         <h1 id="onderwerp" class="h1 text-primary ms-5 mt-2 fw-bold">STEM WIJZER</h1>
 
@@ -58,6 +73,10 @@
 		
 		
 		<a  id="start"  class="btn btn-primary position-absolute top-50 start-50 translate-middle mt-5 fw-bolder fs-4">START </a>
+
+		<a  id="submit"  class=" submit btn btn-primary  mt-5 fw-bolder fs-4">SUBMIT </a>
+
+		
         
 		<div id="extrainfobuttons" class="extrainfobuttons">
 
