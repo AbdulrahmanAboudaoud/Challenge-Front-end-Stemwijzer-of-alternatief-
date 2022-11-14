@@ -219,3 +219,23 @@ label {
     font-size: 15px;
     background-color: white;
   }
+
+  .resultBar{
+    position: absolute;
+    right: 200px;
+    margin-top: 10px;
+  
+   border-radius: 15px;
+  }
+
+  .resultBar2{
+    border-radius: 15px;
+   
+  }
+
+  .result h2{
+    margin-left: 50px;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+

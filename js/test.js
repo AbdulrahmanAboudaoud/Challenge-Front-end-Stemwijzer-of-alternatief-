@@ -35,16 +35,17 @@ var parties = [
        "title": "Bindend referendum",
        "statement": "Er moet een bindend referendum komen, waarmee burgers door het parlement aangenomen wetten kunnen tegenhouden.",
        "parties": [
-         {
-           "name": "PVV",
-           "position": "contra",
-           "opinion": "Geen toelichting gegeven"
-         },
+        
          {
            "name": "SP",
            "position": "pro",
            "opinion": "Directe inspraak en zeggenschap van mensen maakt onze democratie sterker en de besluiten beter. In plaats van een raadgevend referendum willen we zo snel mogelijk een correctief referendum, zodat de bevolking ook tussen de verkiezingen door de gekozen vertegenwoordigers kan corrigeren, zowel bij lokale, nationale als Europese onderwerpen."
          },
+         {
+          "name": "PVV",
+          "position": "contra",
+          "opinion": "Geen toelichting gegeven"
+        },
          {
            "name": "D66",
            "position": "pro",
@@ -87,16 +88,7 @@ var parties = [
        "title": "Anoniem solliciteren",
        "statement": "Om discriminatie op basis van de naam te voorkomen, moet anoniem solliciteren bij de overheid en bij openbare instellingen de regel worden.",
        "parties": [
-         {
-           "name": "D66",
-           "position": "pro",
-           "opinion": "Nederlanders met een niet-westerse achtergrond zijn drie keer vaker werkloos dan Nederlanders met een westerse achtergrond. D66 wil dit verschil terugdringen. EÃ©n van de maatregelen die D66 wil nemen is het opzetten van experimenten met neutrale sollicitatie- en promotieprocedures."
-         },
-         {
-           "name": "CU",
-           "position": "pro",
-           "opinion": "Waar het gaat om vacatures van de overheid wordt anoniem solliciteren de norm. GroenLinks wil dat de overheid een goede afspiegeling vormt van de samenleving, zeker bij publieke topfuncties. "
-         },
+        
          {
            "name": "PVV",
            "position": "contra",
@@ -106,7 +98,17 @@ var parties = [
            "name": "SP",
            "position": "contra",
            "opinion": "Discriminatie  moet fel bestreden worden in alle delen van de maatschappij. Experimenten met anoniem solliciteren uitbreiden is daarom een goed idee. Dit algeheel doorvoeren gaat nu echter een stap te ver. Bovendien zit anoniem solliciteren ook een actief diversiteitsbeleid juist in de weg."
-         }
+         },
+         {
+          "name": "D66",
+          "position": "pro",
+          "opinion": "Nederlanders met een niet-westerse achtergrond zijn drie keer vaker werkloos dan Nederlanders met een westerse achtergrond. D66 wil dit verschil terugdringen. EÃ©n van de maatregelen die D66 wil nemen is het opzetten van experimenten met neutrale sollicitatie- en promotieprocedures."
+        },
+        {
+          "name": "CU",
+          "position": "pro",
+          "opinion": "Waar het gaat om vacatures van de overheid wordt anoniem solliciteren de norm. GroenLinks wil dat de overheid een goede afspiegeling vormt van de samenleving, zeker bij publieke topfuncties. "
+        }
        ]
      },
      {

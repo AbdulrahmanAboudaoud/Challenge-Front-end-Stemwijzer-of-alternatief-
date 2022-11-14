@@ -19,6 +19,7 @@ var partiesFilter = document.getElementById("partiesFilter");
 var choices = [];
 var count = 0;
 var width = 0;
+var topicsChecked = 0;
 var CheckAll = document.getElementById("CheckAll");
 var CheckSecond = document.getElementById("CheckSecond");
 
@@ -157,6 +158,37 @@ function checkAll(myCheckbox){
 }
 
 
+function checkSecond(myCheckbox){
+    if(myCheckbox.checked == true){
+        checkBoxValue.forEach(function(checkbox){
+            var d = checkbox.value;
+            for(var i=0; i<parties.length; i++){
+            if (parties[i].size > 15 && parties[i].name == d ){
+            checkbox.checked = true;
+            importantPartiesArray.push(d);
+        }
+    } });
+
+    }
+
+    else{
+        checkBoxValue.forEach(function(checkbox){
+            
+            var d = checkbox.value;
+            for(var i=0; i<parties.length; i++){
+            if (parties[i].size > 15 && parties[i].name == d ){
+            checkbox.checked = false;
+            importantPartiesArray = [];
+        }
+    }
+
+        });
+    }
+    console.log(importantPartiesArray);
+}
+
+
+
 function checkTopics(){
 
 for (var box of checkBoxValue){
@@ -165,6 +197,9 @@ for (var box of checkBoxValue){
         var s = this.value;
         if(this.checked == true){
             importantTopicsArray.push(this.value);
+            console.log(topicsChecked);
+            topicsChecked++;
+            statments.innerHTML = topicsChecked +"/30 stellingen geselecteerd";
         }
         else{
          var index = importantTopicsArray.indexOf(s);
@@ -189,6 +224,7 @@ console.log(checkBoxValue);
 function importantTopics(){
 
     CheckAll.checked = false;
+    CheckSecond.checked = false;
 
     nav.style.display = "none";
     infobuttons.style.display = "none";
@@ -196,7 +232,7 @@ function importantTopics(){
     startbutton.style.display = "none";
     nextButton.style.display = "block";
     subject.innerHTML = "Zijn er onderwerpen die je extra belangrijk vindt ?";
-    statments.innerHTML = "0/30 stellingen geselecteerd";
+    statments.innerHTML = "";
     createChekboxElement(subjects);
     checkTopics();
 
@@ -250,7 +286,7 @@ if(importantPartiesArray.length < 3){
     alert('je moet minimaal 3 partijen kiezen !');
 }
 else{
-    
+    showResult();
 }
 }
 
@@ -275,5 +311,109 @@ function getStatment(){
    
     
 }
+
+function showResult(){
+    subject.innerHTML = "";
+    statments.innerHTML = "";
+    checkboxdiv.style.display = "none";
+    submitButton.style.display = "none";
+    partiesFilter.style.display = "none";
+
+    for (var party of parties){
+        party.score = 0;
+    }
+
+    for (var i = 0; i < subjects.length; i++){
+        for (var s = 0; s < subjects[i].parties.length; s++){
+            if (subjects[i].parties[s].position == choices[i] ){
+
+                const party = parties.find(element => element.name == subjects[i].parties[s].name)
+               
+                if( importantTopicsArray.includes(subjects[i].title)){
+                party.score +=2;
+               } 
+               else{
+                party.score++;
+               }
+            }
+                 
+               
+            }
+            parties.sort(function (party1,party2) {return party2.score - party1.score;});
+            }
+            console.log(choices);    
+            console.dir(parties);
+
+
+            for (var party of parties){
+                progresline.style.display = "none";
+                div1.style.height = "auto";
+                var resultDiv = document.createElement('div');
+                resultDiv.classList.add("result");
+                var h2 = document.createElement('h2');
+                resultDiv.appendChild(h2);
+                h2.style.display = "inline-block";
+                div1.appendChild(resultDiv);
+                var amount =  filterResult(choices);
+                var procent = (party.score/amount)*100;
+                var procentFixed = Number.parseFloat(procent).toFixed(2);
+                
+                var scoreBarContainer = document.createElement('div');
+                scoreBarContainer.style.height = "25px";
+                scoreBarContainer.style.width = "300px";
+                scoreBarContainer.style.backgroundColor = "gray";
+                resultDiv.appendChild(scoreBarContainer);
+                var scoreBar = document.createElement('div');
+                scoreBar.style.height= "25px";
+                scoreBar.style.width = procent+"%";
+                scoreBar.style.backgroundColor = "green";
+                scoreBarContainer.appendChild(scoreBar);
+                scoreBarContainer.style.display= "inline-block";
+                scoreBarContainer.classList.add ("resultBar"); 
+                scoreBar.classList.add ("resultBar2"); 
+
+                
+              
+
+                h2.innerHTML =  party.name + "-" + "" + " Procent : " + "" + procentFixed + "%";
+               
+                console.log(importantPartiesArray);
+
+
+            };
+        
+            
+        }
+        
+     
+        
+        function filterResult(choices){
+            const result = choices.filter(choice => choice !== "skip")
+            
+
+            const result2 = choices.filter((choice,index) => {
+            if(choice !== "skip"){
+                var title = subjects[index].title;
+                if( importantTopicsArray.includes(title)){ 
+                 return true;
+                }
+                else {
+                 return false;
+                }
+               
+            }
+        
+        
+                            }
+            );
+           
+
+           var  totaalScore = result.length + result2.length;
+           return totaalScore;
+        }
+    
+        
+
+
 
 
