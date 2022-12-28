@@ -47,6 +47,7 @@ function startFunction(){
     document.body.style.backgroundImage = "none";
     getStatment();
     progress(0);
+    resetColor();
    
     
 }
@@ -64,10 +65,27 @@ function backbuttonFunction(){
 
     }
     else{
-      
         count--
         getStatment();
         progress(-3.125);
+        
+        if(choices[count]== "pro"){
+            resetColor();
+            agree.style.backgroundColor="blue"
+        }
+        else if(choices[count]== "contra"){
+            resetColor();
+            disagree.style.backgroundColor="blue"
+        }
+        else if(choices[count]== "GVB"){
+            resetColor();
+            none.style.backgroundColor="blue"
+        }
+        else if(choices[count]=="skip"){
+            resetColor();
+            skip.style.backgroundColor="blue"
+        }
+       
         
     }
 
@@ -77,34 +95,51 @@ function backbuttonFunction(){
 
 }
 
+function resetColor(){
+    agree.style.backgroundColor="green";
+    disagree.style.backgroundColor="red";
+    none.style.backgroundColor="grey";
+    skip.style.backgroundColor="white";
+}
+
 function agreeFunction(){
+    resetColor();
     choices[count]="pro";
     count++
     getStatment();
     progress(3.125);
+    resetColor();
+    
     
     
 }
 function noneFunction(){
+    resetColor();
     choices[count]="GVB";
     count++
     getStatment();
     progress(3.125);
     
+    
+    
 
 }
 function disagreeFunction(){
-    choices.push("contra");
+    resetColor();
+    choices[count]="contra";
     count++
     getStatment();
     progress(3.125);
     
+    
 }
 function skipFunction(){
-    choices.push("skip");
+    resetColor();
+    choices[count]="skip";
     count++
     getStatment();
     progress(3.125);
+    
     
 }
 
@@ -136,7 +171,7 @@ var importantTopicsArray = [];
 var checkBoxValue = document.getElementsByName('cb');
 
 
-
+/*
 function checkAll(myCheckbox){
     if(myCheckbox.checked == true){
         checkBoxValue.forEach(function(checkbox){
@@ -156,6 +191,38 @@ function checkAll(myCheckbox){
   
     console.log(importantPartiesArray);
 }
+
+*/
+function checkAll(myCheckbox){
+    if(myCheckbox.checked == true){
+        checkBoxValue.forEach(function(checkbox){
+            var d = checkbox.value;
+            for(var i=0; i<parties.length; i++){
+            if (parties[i].secular == true && parties[i].name == d ){
+            checkbox.checked = true;
+            importantPartiesArray.push(d);
+        }
+    } });
+
+    }
+
+    else{
+        checkBoxValue.forEach(function(checkbox){
+            
+            var d = checkbox.value;
+            for(var i=0; i<parties.length; i++){
+            if (parties[i].size !== true && parties[i].name == d ){
+            checkbox.checked = false;
+            importantPartiesArray = [];
+        }
+    }
+
+        });
+    }
+    console.log(importantPartiesArray);
+}
+
+
 
 
 function checkSecond(myCheckbox){
@@ -306,6 +373,7 @@ function getStatment(){
     subject.innerHTML = subjects[count].title;
     statments.innerHTML = subjects[count].statement;
     counter.innerHTML = count+1 +"/30";
+    console.log(choices);
 }
     
    
