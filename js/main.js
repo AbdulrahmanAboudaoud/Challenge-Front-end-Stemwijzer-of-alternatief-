@@ -29,6 +29,8 @@ backbutton.addEventListener("click",backbuttonFunction);
 nextButton.addEventListener ("click",importantPartties);
 
 
+// function for the progress blue line 
+
 function progress(value){
 var progresline = document.getElementById("progresline");
 width = width+value;
@@ -37,6 +39,7 @@ progresline.style.width = (width  ) + "%";
 
 }
 
+// start function to restart every thing including colors + progress bar + statments position  
 
 function startFunction(){
     
@@ -51,6 +54,9 @@ function startFunction(){
    
     
 }
+
+
+// back function with if statment to get the previous statment and to change the style based on the current statment 
 
 function backbuttonFunction(){
    
@@ -95,12 +101,16 @@ function backbuttonFunction(){
 
 }
 
+// function to change the previous choice btn color 
+
 function resetColor(){
     agree.style.backgroundColor="green";
     disagree.style.backgroundColor="red";
     none.style.backgroundColor="grey";
     skip.style.backgroundColor="white";
 }
+
+// 4 diffrent functions for each choice btn to submit the choice and put it in an array + adjusting the progress bar and reset the choices btns colors  
 
 function agreeFunction(){
     resetColor();
@@ -143,6 +153,8 @@ function skipFunction(){
     
 }
 
+// function to create the checkboxes for secular 
+
 function createChekboxElement(arr){
           
     for (var option of arr){
@@ -171,28 +183,8 @@ var importantTopicsArray = [];
 var checkBoxValue = document.getElementsByName('cb');
 
 
-/*
-function checkAll(myCheckbox){
-    if(myCheckbox.checked == true){
-        checkBoxValue.forEach(function(checkbox){
-            var d = checkbox.value;
-            checkbox.checked = true;
-            importantPartiesArray.push(d);
-        });
-    }
+// function to chose all parties when clicking on chose all option 
 
-    else{
-        checkBoxValue.forEach(function(checkbox){
-            checkbox.checked = false;
-            importantPartiesArray = [];
-
-        });
-    }
-  
-    console.log(importantPartiesArray);
-}
-
-*/
 function checkAll(myCheckbox){
     if(myCheckbox.checked == true){
         checkBoxValue.forEach(function(checkbox){
@@ -224,6 +216,7 @@ function checkAll(myCheckbox){
 
 
 
+// function to chose big parties when clicking on chose big  option
 
 function checkSecond(myCheckbox){
     if(myCheckbox.checked == true){
@@ -255,6 +248,7 @@ function checkSecond(myCheckbox){
 }
 
 
+// function to put all chosen important topics in one array and to delete it u it was not chosen 
 
 function checkTopics(){
 
@@ -287,6 +281,7 @@ console.log(checkBoxValue);
 
 
 
+// function to change the layout of the page to chose important topics and to trigger the functions to create and check the topics boxes 
 
 function importantTopics(){
 
@@ -306,6 +301,8 @@ function importantTopics(){
 }
 
 var importantPartiesArray = [];
+
+// function to put all chosen parties in one array and to delete it u it was not chosen 
 
 function checkParties(){
 var checkBoxValue = document.getElementsByName('cb');
@@ -332,6 +329,7 @@ console.log(checkBoxValue);
 
 
 
+//function to change the page layout and to trigger another functions to chose important parties and submiting them 
 
 function importantPartties(){
     nextButton.style.display = "none";
@@ -348,6 +346,7 @@ function importantPartties(){
 }
 
 
+// function to controle the amount of chosen parties and to show a warning if its less than 3 
 function amountPartiesChecker(){
 if(importantPartiesArray.length < 3){
     alert('je moet minimaal 3 partijen kiezen !');
@@ -359,8 +358,7 @@ else{
 
 
 
-
-
+// function to get the current statement based on the array and to trigger another function when it reach the last statement
 function getStatment(){
 
     if(count == subjects.length){
@@ -379,6 +377,8 @@ function getStatment(){
    
     
 }
+
+// function to calculate the result and showing it up 
 
 function showResult(){
     subject.innerHTML = "";
@@ -454,7 +454,7 @@ function showResult(){
         }
         
      
-        
+        // function to filter the choices and don't count the skip ones 
         function filterResult(choices){
             const result = choices.filter(choice => choice !== "skip")
             
